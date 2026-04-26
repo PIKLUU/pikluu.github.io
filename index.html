@@ -139,6 +139,29 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
+	/* --- Footer Styling --- */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .footer:hover {
+            opacity: 1;
+            color: var(--text);
+        }
+
+        .footer span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
     </style>
 </head>
 <body>
@@ -150,6 +173,10 @@
             </div>
 
         <audio id="audio-player"></audio>
+    </div>
+
+	<div class="footer">
+        Crafted with ❤️ by <span>Piklu</span> &copy; 2026
     </div>
 
     <script src="streams.js"></script>
