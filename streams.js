@@ -15,7 +15,7 @@ const myChannels = [
 ];
 
 
-// --- NEW MODERN LOGIC (Handles animations and active states) ---
+// --- PLAYER LOGIC ---
 const channelList = document.getElementById('channel-list');
 const audioPlayer = document.getElementById('audio-player');
 const playIconSvg = "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/circle-play.svg";
@@ -36,17 +36,12 @@ myChannels.forEach(channel => {
 
         // Check if current stream is playing
         if (audioPlayer.src === channel.link && !audioPlayer.paused) {
-            // STOP playback
             audioPlayer.pause();
-            
-            // RESET this button's look
             playIcon.src = playIconSvg;
             playIcon.classList.remove('active-pulse');
             channelText.classList.remove('playing-text');
         } else {
-            // PLAY new stream
-            
-            // First, RESET ALL other buttons back to normal
+            // Reset all other buttons
             document.querySelectorAll('.play-icon').forEach(icon => {
                 icon.src = playIconSvg;
                 icon.classList.remove('active-pulse');
@@ -55,15 +50,15 @@ myChannels.forEach(channel => {
                 text.classList.remove('playing-text');
             });
             
-            // Set new stream
+            // Play new stream
             audioPlayer.src = channel.link;
             audioPlayer.load();
             audioPlayer.play();
             
-            // Change THIS button to active/stop state
+            // Set active state
             playIcon.src = stopIconSvg;
-            playIcon.classList.add('active-pulse'); // Start the pulsing animation
-            channelText.classList.add('playing-text'); // Turn text accent color
+            playIcon.classList.add('active-pulse'); 
+            channelText.classList.add('playing-text'); 
         }
     });
 
